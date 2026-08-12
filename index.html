@@ -90,12 +90,20 @@
           staying where you put it.</li>
       </ol>
 
-      <div class="video-frame">
-        <!-- TODO: swap in the real installation video.
-             Self-hosted: <video src="assets/install.mp4" poster="assets/install-poster.jpg" controls playsinline preload="metadata"></video>
-             YouTube:     <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Installing a Jibclip" allowfullscreen loading="lazy"></iframe> -->
-        <div class="placeholder placeholder-video" data-slot="installation video">Watch the install</div>
-      </div>
+      <figure class="video-figure">
+        <div class="video-frame">
+          <video
+            src="assets/install.mp4"
+            poster="assets/install-poster.jpg"
+            autoplay muted loop playsinline controls
+            preload="metadata"
+            aria-describedby="install-caption"></video>
+        </div>
+        <figcaption id="install-caption">
+          The charm's post drops through the shoe, and the Jibclip slides on
+          underneath to lock it there.
+        </figcaption>
+      </figure>
     </section>
 
     <!-- ── Story ────────────────────────────────────────────────────── -->
@@ -173,6 +181,17 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // The install clip loops on its own, which is motion the visitor did not
+    // ask for. If they've told the OS they'd rather not, hold the poster and
+    // let them start it from the controls.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('video[autoplay]').forEach(function (v) {
+        v.removeAttribute('autoplay');
+        v.removeAttribute('loop');
+        v.pause();
+      });
+    }
   </script>
 </body>
 </html>

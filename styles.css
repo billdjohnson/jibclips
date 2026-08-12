@@ -272,12 +272,23 @@ main > section,
 
 /* ─── Media ──────────────────────────────────────────────────────────── */
 
+.video-figure { margin: 2.5rem 0 0; }
+
 .video-frame {
-  margin-top: 2.5rem;
   border: var(--border) solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
+  /* Matches the render's own backdrop so the frame reads as one surface
+     while the poster loads. */
+  background: #c5c5c5;
+}
+
+.video-figure figcaption {
+  max-width: var(--measure);
+  margin-top: 1rem;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
 }
 .video-frame video,
 .video-frame iframe {
