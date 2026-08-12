@@ -41,8 +41,13 @@
       </div>
 
       <div class="hero-media">
-        <!-- Swap for: <img src="assets/hero.jpg" alt="A Jibclip holding a shoe charm in place" width="1200" height="1200"> -->
-        <div class="placeholder placeholder-square" data-slot="assets/hero.jpg">Hero image</div>
+        <!-- The render's background is opaque white, so it sits on its own
+             white plate rather than floating on the page ground. -->
+        <picture class="product-plate">
+          <source srcset="assets/jibclip.webp" type="image/webp">
+          <img src="assets/jibclip.jpg" width="1400" height="1345"
+               alt="A Jibclip: a small clear clip with a curved slot that grips the post of a shoe charm.">
+        </picture>
       </div>
     </section>
 
@@ -107,23 +112,18 @@
     </section>
 
     <!-- ── Story ────────────────────────────────────────────────────── -->
-    <section class="section story">
-      <div class="story-media">
-        <!-- Swap for a photo of you, the bench, or the printers running. -->
-        <div class="placeholder placeholder-portrait" data-slot="assets/about.jpg">Photo of you</div>
-      </div>
+    <!-- Single column until there's a photo of Bill or the bench. When one
+         arrives, add class="story" back on the section and drop a
+         <div class="story-media"> with the picture in front of .story-copy. -->
+    <section class="section">
       <div class="story-copy">
         <span class="eyebrow">Who makes these</span>
         <h2>One person, one small shop</h2>
-        <p>
-          <!-- TODO: your story, in your own voice. Prompts, if they help:
-               Whose lost charm started this? What did the first prototype
-               look like? How many tries before the dip held? What's the
-               shop actually like on a Tuesday? -->
-          PLACEHOLDER — this is the part only you can write. Two or three short
-          paragraphs on how the first Jibclip came to exist, what you were
-          trying to fix, and how it turned into something people order.
-        </p>
+        <!-- TODO: Bill's story goes here, in his own voice — two or three
+             short paragraphs. Prompts, if they help: whose lost charm started
+             this? What did the first prototype look like? How many tries
+             before the dip held? What's the shop like on a Tuesday?
+             Until then this section says only what's verifiably true. -->
         <p>
           Every Jibclip is molded from UV resin and finished by hand at
           Mad 3D Shop. Orders ship the next business day, packed at the same
@@ -136,12 +136,18 @@
     <!-- ── Gallery ──────────────────────────────────────────────────── -->
     <section class="section">
       <span class="eyebrow">A closer look</span>
-      <h2>In the wild</h2>
+      <h2>Smaller than you'd think</h2>
       <div class="gallery">
-        <div class="placeholder placeholder-square" data-slot="assets/gallery-1.jpg">Photo 1</div>
-        <div class="placeholder placeholder-square" data-slot="assets/gallery-2.jpg">Photo 2</div>
-        <div class="placeholder placeholder-square" data-slot="assets/gallery-3.jpg">Photo 3</div>
-        <div class="placeholder placeholder-square" data-slot="assets/gallery-4.jpg">Photo 4</div>
+        <picture>
+          <source srcset="assets/in-hand.webp" type="image/webp">
+          <img src="assets/in-hand.jpg" width="1000" height="1064" loading="lazy"
+               alt="A clear Jibclip held between finger and thumb, roughly the size of a fingertip.">
+        </picture>
+        <picture>
+          <source srcset="assets/in-hand-tall.webp" type="image/webp">
+          <img src="assets/in-hand-tall.jpg" width="788" height="1400" loading="lazy"
+               alt="A Jibclip held up to the light, showing the slot that grips the charm post.">
+        </picture>
       </div>
     </section>
 

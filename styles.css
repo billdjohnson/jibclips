@@ -301,38 +301,35 @@ main > section,
 .gallery {
   display: grid;
   gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  max-width: 46rem;
   margin-top: 2.5rem;
 }
+
+/* The two shots were taken at different aspect ratios; a shared ratio keeps
+   the row even, and the clip sits centred in both so nothing important
+   gets cropped. */
+.gallery picture { display: block; }
 .gallery img {
   width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
   border: var(--border) solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
-/* Temporary stand-ins — delete these rules once every asset is in place. */
-.placeholder {
-  display: grid;
-  place-items: center;
-  padding: 1rem;
-  background: var(--paper);
-  border: var(--border) dashed var(--line-faint);
-  border-radius: var(--radius);
-  color: var(--ink-soft);
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-align: center;
-}
-.placeholder::after {
-  content: attr(data-slot);
+/* The product shots are photographed on white, so their plate stays white in
+   both themes — a dark card behind a white photo just looks like a mistake. */
+.product-plate {
   display: block;
-  font-weight: 400;
-  opacity: 0.65;
+  padding: clamp(1rem, 3vw, 2rem);
+  background: #ffffff;
+  border: var(--border) solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
-.placeholder-square   { aspect-ratio: 1; }
-.placeholder-video    { aspect-ratio: 16 / 9; border-radius: 0; border: 0; }
-.placeholder-portrait { aspect-ratio: 4 / 5; }
+.product-plate img { width: 100%; height: auto; }
 
 /* ─── Story ──────────────────────────────────────────────────────────── */
 
