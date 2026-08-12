@@ -24,7 +24,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # enablement turns Pages on (and points it at Actions) the first time
+      # this runs, so the site does not need to be enabled by hand first.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       # The site is plain HTML/CSS at the repo root, so there is nothing to
       # build — upload the checkout as-is.
