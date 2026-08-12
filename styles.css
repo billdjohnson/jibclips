@@ -1,0 +1,210 @@
+/* ─── Design tokens ──────────────────────────────────────────────────
+   Light palette lives on :root. Dark overrides only redefine tokens, so
+   changing a colour here changes it everywhere.                        */
+
+:root {
+  --bg:            #fbfaf8;
+  --bg-raised:     #ffffff;
+  --text:          #1c1a17;
+  --text-muted:    #625c54;
+  --border:        #e4dfd7;
+  --accent:        #b4522b;  /* buttons, links — swap for your brand colour */
+  --accent-text:   #ffffff;
+  --accent-hover:  #97431f;
+
+  --radius:        10px;
+  --measure:       62ch;     /* max line length for readable body text */
+  --gap:           clamp(1rem, 3vw, 2rem);
+  --section-y:     clamp(3rem, 9vw, 6rem);
+
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:           #161513;
+    --bg-raised:    #201e1b;
+    --text:         #f2efea;
+    --text-muted:   #a9a29a;
+    --border:       #332f2b;
+    --accent:       #e0764a;
+    --accent-text:  #161513;
+    --accent-hover: #ef8a5f;
+  }
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, video { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3 { line-height: 1.15; text-wrap: balance; margin: 0 0 0.5em; }
+h1 { font-size: clamp(2rem, 1.4rem + 3vw, 3.5rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.125rem; }
+
+p { margin: 0 0 1rem; max-width: var(--measure); }
+.lede { color: var(--text-muted); font-size: 1.075em; }
+
+a { color: var(--accent); }
+
+/* ─── Layout ─────────────────────────────────────────────────────────── */
+
+.site-header,
+main > section,
+.site-footer {
+  max-width: 68rem;
+  margin-inline: auto;
+  padding-inline: var(--gap);
+}
+
+.section { padding-block: var(--section-y); }
+.section + .section { border-top: 1px solid var(--border); }
+
+/* ─── Header ─────────────────────────────────────────────────────────── */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.25rem;
+}
+
+.wordmark {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 120ms ease;
+}
+.btn:hover  { background: var(--accent-hover); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.btn-small { padding: 0.5rem 1rem; font-size: 0.9375rem; }
+.btn-large { padding: 1rem 2.25rem; font-size: 1.125rem; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn-ghost:hover { background: var(--bg-raised); }
+
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+
+/* ─── Hero ───────────────────────────────────────────────────────────── */
+
+.hero {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+  padding-block: var(--section-y);
+}
+
+@media (min-width: 48rem) {
+  .hero { grid-template-columns: 1.05fr 1fr; }
+}
+
+/* ─── Features ───────────────────────────────────────────────────────── */
+
+.features {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.features li {
+  padding: 1.5rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.features p { margin-bottom: 0; color: var(--text-muted); }
+
+/* ─── Media ──────────────────────────────────────────────────────────── */
+
+.video-frame {
+  margin-top: 2rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.video-frame video { width: 100%; }
+
+.gallery {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  margin-top: 2rem;
+}
+.gallery img { width: 100%; border-radius: var(--radius); }
+
+/* Temporary stand-ins — delete these rules once every asset is dropped in. */
+.placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--bg-raised);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+.placeholder::after {
+  content: " (" attr(data-slot) ")";
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+.placeholder-square { aspect-ratio: 1; }
+.placeholder-video  { aspect-ratio: 16 / 9; }
+
+/* ─── Closing + footer ───────────────────────────────────────────────── */
+
+.closing { text-align: center; }
+.closing p { margin-inline: auto; }
+.closing .btn { margin-top: 1rem; }
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-block: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+.site-footer p { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

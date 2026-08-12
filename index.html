@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jibclips</title>
+  <meta name="description" content="PLACEHOLDER — one-sentence description of Jibclips, used by Google and link previews.">
+
+  <!-- Link preview cards (Facebook, iMessage, Slack, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jibclips">
+  <meta property="og:description" content="PLACEHOLDER — one-sentence description of Jibclips.">
+  <meta property="og:image" content="assets/social-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="wordmark" href="#top">Jibclips</a>
+    <a class="btn btn-small" href="#etsy-link" data-etsy>Shop on Etsy</a>
+  </header>
+
+  <main id="top">
+
+    <!-- ── Hero ─────────────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>PLACEHOLDER headline — what a Jibclip is, in six words.</h1>
+        <p class="lede">
+          PLACEHOLDER — two sentences on what it does and who it's for. This is
+          the paragraph that decides whether someone clicks through to Etsy.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="#etsy-link" data-etsy>Shop on Etsy</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <!-- Swap for: <img src="assets/hero.jpg" alt="..." width="1200" height="1200"> -->
+        <div class="placeholder placeholder-square" data-slot="hero.jpg">Hero image</div>
+      </div>
+    </section>
+
+    <!-- ── What it is ───────────────────────────────────────────────── -->
+    <section id="how" class="section">
+      <h2>What it does</h2>
+      <ul class="features">
+        <li>
+          <h3>PLACEHOLDER benefit one</h3>
+          <p>One or two sentences. Concrete, not salesy.</p>
+        </li>
+        <li>
+          <h3>PLACEHOLDER benefit two</h3>
+          <p>One or two sentences. Concrete, not salesy.</p>
+        </li>
+        <li>
+          <h3>PLACEHOLDER benefit three</h3>
+          <p>One or two sentences. Concrete, not salesy.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ── Video (delete this section if there's no video) ───────────── -->
+    <section class="section section-video">
+      <h2>See it in action</h2>
+      <div class="video-frame">
+        <!-- Swap for: <video src="assets/demo.mp4" poster="assets/demo-poster.jpg"
+             controls playsinline preload="metadata"></video> -->
+        <div class="placeholder placeholder-video" data-slot="demo.mp4">Demo video</div>
+      </div>
+    </section>
+
+    <!-- ── Gallery ──────────────────────────────────────────────────── -->
+    <section class="section">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <div class="placeholder placeholder-square" data-slot="gallery-1.jpg">Photo 1</div>
+        <div class="placeholder placeholder-square" data-slot="gallery-2.jpg">Photo 2</div>
+        <div class="placeholder placeholder-square" data-slot="gallery-3.jpg">Photo 3</div>
+        <div class="placeholder placeholder-square" data-slot="gallery-4.jpg">Photo 4</div>
+      </div>
+    </section>
+
+    <!-- ── Closing call to action ───────────────────────────────────── -->
+    <section class="section closing">
+      <h2>Get yours</h2>
+      <p class="lede">PLACEHOLDER — one line on price, shipping, or made-to-order lead time.</p>
+      <a class="btn btn-large" href="#etsy-link" data-etsy>Shop on Etsy</a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Jibclips</p>
+    <p><a href="#etsy-link" data-etsy>Etsy shop</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
