@@ -41,11 +41,11 @@
       </div>
 
       <div class="hero-media">
-        <!-- The render's background is opaque white, so it sits on its own
-             white plate rather than floating on the page ground. -->
-        <picture class="product-plate">
-          <source srcset="assets/jibclip.webp" type="image/webp">
-          <img src="assets/jibclip.jpg" width="1400" height="1345"
+        <!-- Cut out, so it sits directly on the page ground in both themes.
+             PNG rather than JPEG for the fallback, since JPEG has no alpha. -->
+        <picture class="hero-product">
+          <source srcset="assets/jibclip-alpha.webp" type="image/webp">
+          <img src="assets/jibclip-alpha.png" width="1400" height="1346"
                alt="A Jibclip: a small clear clip with a curved slot that grips the post of a shoe charm.">
         </picture>
       </div>

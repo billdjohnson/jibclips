@@ -319,17 +319,10 @@ main > section,
   box-shadow: var(--shadow);
 }
 
-/* The product shots are photographed on white, so their plate stays white in
-   both themes — a dark card behind a white photo just looks like a mistake. */
-.product-plate {
-  display: block;
-  padding: clamp(1rem, 3vw, 2rem);
-  background: #ffffff;
-  border: var(--border) solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-.product-plate img { width: 100%; height: auto; }
+/* The hero render is cut out, so it needs no plate — it reads directly on
+   either theme ground. */
+.hero-product { display: block; }
+.hero-product img { width: 100%; height: auto; }
 
 /* ─── Story ──────────────────────────────────────────────────────────── */
 
