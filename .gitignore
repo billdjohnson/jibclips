@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Image editing sidecars — keep the exports, not the working files
+*.psd
+*.xcf
+Thumbs.db
