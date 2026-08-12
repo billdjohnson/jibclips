@@ -191,11 +191,39 @@ main > section,
 .cta-row { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: 2rem; }
 
 .fineprint {
-  margin-top: 1.5rem;
+  margin-top: 0.75rem;
   margin-bottom: 0;
   color: var(--ink-soft);
   font-size: 0.875rem;
 }
+
+/* Trademark mark: small, raised, and never as loud as the word it sits on. */
+.tm {
+  font-size: 0.5em;
+  font-weight: 600;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 0.05em;
+}
+
+/* ─── Rating ─────────────────────────────────────────────────────────── */
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.rating .stars {
+  color: var(--accent);
+  font-size: 1.05em;
+  letter-spacing: 0.05em;
+}
+.rating-center { justify-content: center; margin-top: 1.25rem; }
 
 /* ─── Hero ───────────────────────────────────────────────────────────── */
 
