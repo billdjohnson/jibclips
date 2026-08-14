@@ -180,9 +180,53 @@
           that snap when one seats. They fit genuine Crocs&reg; and
           Jibbitz&reg;; off-brand clogs can't be guaranteed, and they're not
           suited to shoes with a fleece or fabric lining. Not sure about yours?
-          Message the shop before you order and we'll sort it out.
+          <a href="#contact">Ask us</a> before you order and we'll sort it out.
         </p>
       </div>
+    </section>
+
+    <!-- ── Contact ──────────────────────────────────────────────────── -->
+    <section id="contact" class="section">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Bulk orders, custom runs, or a question</h2>
+      <p class="lede">
+        Buying for a team, a shop, or an event? Want a special-edition run, or
+        just have a question about fit? Send a note straight to the maker.
+      </p>
+
+      <!-- Posts to Web3Forms so the address stays out of the page source.
+           TODO: paste the access key from web3forms.com into data-access-key
+           below (or the hidden input). Until then the form falls back to a
+           direct email link on submit. -->
+      <form id="contact-form" class="contact-form"
+            action="https://api.web3forms.com/submit" method="POST"
+            data-access-key="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New message from jibclips.com">
+        <input type="hidden" name="from_name" value="Jibclips website">
+        <!-- Honeypot: real people leave this blank; bots tend to fill it. -->
+        <input type="checkbox" name="botcheck" class="visually-hidden"
+               tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="cf-email">Email <span class="req" aria-hidden="true">*</span></label>
+          <input id="cf-email" name="email" type="email" required
+                 autocomplete="email" placeholder="you@example.com">
+        </div>
+
+        <div class="field">
+          <label for="cf-message">Message <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="cf-message" name="message" rows="5" required
+                    placeholder="How many, what for, any questions…"></textarea>
+        </div>
+
+        <button class="btn btn-large" type="submit">Send message</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
     </section>
 
     <!-- ── Closing CTA ──────────────────────────────────────────────── -->
@@ -224,6 +268,66 @@
         v.pause();
       });
     }
+
+    // ── Contact form ────────────────────────────────────────────────────
+    // Submits to Web3Forms in the background so the visitor stays on the page.
+    // The direct address is never in the page source: it's assembled here only
+    // when needed, so a failed send (or a not-yet-configured key) still gives a
+    // real person a way through instead of a dead end.
+    (function () {
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+      var status = form.querySelector('.form-status');
+      var button = form.querySelector('button[type="submit"]');
+      var key = form.getAttribute('data-access-key');
+
+      function mailFallback(lead) {
+        var addr = 'jibclips.usa' + '@' + 'gmail.com';           // kept out of static HTML
+        var a = document.createElement('a');
+        a.href = 'mailto:' + addr +
+                 '?subject=' + encodeURIComponent('Jibclips enquiry');
+        a.textContent = addr;
+        status.textContent = lead + ' ';
+        status.appendChild(a);
+        status.className = 'form-status is-error';
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (!key || key === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+          mailFallback('The form isn’t finished setting up yet — email us at');
+          return;
+        }
+
+        button.disabled = true;
+        status.textContent = 'Sending…';
+        status.className = 'form-status';
+
+        var data = Object.fromEntries(new FormData(form).entries());
+        data.access_key = key;
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data)
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (json) {
+            if (json.success) {
+              form.innerHTML =
+                '<p class="form-status is-ok">Thanks — your message is on its way. ' +
+                'We’ll get back to you soon.</p>';
+            } else {
+              mailFallback('Something went wrong sending that — email us directly at');
+            }
+          })
+          .catch(function () {
+            mailFallback('Something went wrong sending that — email us directly at');
+          })
+          .finally(function () { button.disabled = false; });
+      });
+    })();
   </script>
 </body>
 </html>
