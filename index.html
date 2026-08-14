@@ -194,13 +194,12 @@
         just have a question about fit? Send a note straight to the maker.
       </p>
 
-      <!-- Posts to Web3Forms so the address stays out of the page source.
-           TODO: paste the access key from web3forms.com into data-access-key
-           below (or the hidden input). Until then the form falls back to a
-           direct email link on submit. -->
+      <!-- Posts to Web3Forms so the address stays out of the page source;
+           only the public access key appears here. If a send fails, the
+           script shows a JS-assembled direct email as a fallback. -->
       <form id="contact-form" class="contact-form"
-            action="https://api.web3forms.com/submit" method="POST"
-            data-access-key="YOUR_WEB3FORMS_ACCESS_KEY">
+            action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="299a8eeb-3a13-48d8-9aa5-6705ebb1a208">
         <input type="hidden" name="subject" value="New message from jibclips.com">
         <input type="hidden" name="from_name" value="Jibclips website">
         <!-- Honeypot: real people leave this blank; bots tend to fill it. -->
@@ -279,7 +278,8 @@
       if (!form) return;
       var status = form.querySelector('.form-status');
       var button = form.querySelector('button[type="submit"]');
-      var key = form.getAttribute('data-access-key');
+      var keyField = form.querySelector('input[name="access_key"]');
+      var key = keyField ? keyField.value : '';
 
       function mailFallback(lead) {
         var addr = 'jibclips.usa' + '@' + 'gmail.com';           // kept out of static HTML
